@@ -1,0 +1,50 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "Spock EMS Sonnen Setup",
+                "description": "Enter your Spock API Token and sonnenBatterie details.",
+                "data": {
+                    "api_token": "Spock EMS API Token",
+                    "plant_id": "Spock EMS Plant ID",
+                    "sonnen_ip": "sonnenBatterie IP Address",
+                    "sonnen_token": "sonnenBatterie Auth Token (API Key)"
+                }
+            }
+        },
+        "error": {
+            "cannot_connect": "Unable to connect to Spock API. Check network.",
+            "invalid_auth": "Invalid Spock API Token.",
+            "cannot_connect_sonnen": "Unable to connect to sonnenBatterie. Check IP address and network.",
+            "invalid_sonnen_token": "Invalid sonnenBatterie Auth Token."
+        },
+        "abort": {
+            "already_configured": "This Plant ID is already configured."
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "Spock EMS Sonnen Options",
+                "data": {
+                    "api_token": "Spock EMS API Token",
+                    "plant_id": "Spock EMS Plant ID",
+                    "sonnen_ip": "sonnenBatterie IP Address",
+                    "sonnen_token": "sonnenBatterie Auth Token (API Key)"
+                }
+            }
+        },
+        "error": {
+            "invalid_auth": "Invalid Spock API Token.",
+            "cannot_connect_sonnen": "Unable to connect to sonnenBatterie.",
+            "invalid_sonnen_token": "Invalid sonnenBatterie Auth Token."
+        }
+    },
+    "entity": {
+        "switch": {
+            "polling_enabled": {
+                "name": "Enable API Polling"
+            }
+        }
+    }
+}

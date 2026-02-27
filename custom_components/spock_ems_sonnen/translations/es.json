@@ -1,0 +1,50 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "Configuracion de Spock EMS para baterias Sonnen",
+                "description": "Introduce tu API Token de Spock y los datos de tu sonnenBatterie.",
+                "data": {
+                    "api_token": "Spock EMS API Token",
+                    "plant_id": "Spock EMS ID de Planta",
+                    "sonnen_ip": "Direccion IP de la sonnenBatterie",
+                    "sonnen_token": "Auth Token de la sonnenBatterie (API Key)"
+                }
+            }
+        },
+        "error": {
+            "cannot_connect": "No se pudo conectar a la API de Spock. Comprueba la red.",
+            "invalid_auth": "API Token de Spock invalido.",
+            "cannot_connect_sonnen": "No se pudo conectar a la sonnenBatterie. Comprueba la IP y la red.",
+            "invalid_sonnen_token": "Auth Token de la sonnenBatterie invalido."
+        },
+        "abort": {
+            "already_configured": "Este ID de Planta ya esta configurado."
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "Opciones de Spock EMS Sonnen",
+                "data": {
+                    "api_token": "Spock EMS API Token",
+                    "plant_id": "Spock EMS ID de Planta",
+                    "sonnen_ip": "Direccion IP de la sonnenBatterie",
+                    "sonnen_token": "Auth Token de la sonnenBatterie (API Key)"
+                }
+            }
+        },
+        "error": {
+            "invalid_auth": "API Token de Spock invalido.",
+            "cannot_connect_sonnen": "No se pudo conectar a la sonnenBatterie.",
+            "invalid_sonnen_token": "Auth Token de la sonnenBatterie invalido."
+        }
+    },
+    "entity": {
+        "switch": {
+            "polling_enabled": {
+                "name": "Habilitar Scheduler"
+            }
+        }
+    }
+}
