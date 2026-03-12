@@ -42,10 +42,11 @@ async def validate_sonnen(
 ) -> dict[str, str]:
     """Valida la conexión a la batería Sonnen (IP + Auth-Token)."""
     session = async_get_clientsession(hass)
-    # Intentar leer /api/v2/status (sin token) para verificar conectividad
+    # Intentar leer /api/v2/status con Auth-Token para verificar conectividad
+    headers = {"Auth-Token": sonnen_token}
     try:
         async with session.get(
-            f"http://{sonnen_ip}/api/v2/status", timeout=10
+            f"http://{sonnen_ip}/api/v2/status", headers=headers, timeout=10
         ) as resp:
             if resp.status != 200:
                 return {"base": "cannot_connect_sonnen"}

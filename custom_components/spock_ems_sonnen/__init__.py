@@ -120,8 +120,8 @@ class SpockEnergyCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             raise ValueError(f"Timeout al consultar Sonnen {path}")
 
     async def _read_sonnen_status(self) -> dict:
-        """Lee /api/v2/status (normalmente sin token)."""
-        return await self._sonnen_get("/status")
+        """Lee /api/v2/status con Auth-Token."""
+        return await self._sonnen_get("/status", auth=True)
 
     # ---- Escritura de órdenes a Sonnen ----
 
