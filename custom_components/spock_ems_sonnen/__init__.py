@@ -133,18 +133,22 @@ class SpockEnergyCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         url = f"{self._sonnen_base}{path}"
         headers = {"Auth-Token": self.sonnen_token}
         async with self._session.post(url, headers=headers, timeout=10) as resp:
+            txt = await resp.text()
             if resp.status not in (200, 201):
-                txt = await resp.text()
                 _LOGGER.warning("Sonnen POST %s → HTTP %s: %s", path, resp.status, txt)
+            else:
+                _LOGGER.debug("Sonnen POST %s → HTTP %s: %s", path, resp.status, txt)
 
     async def _sonnen_put_config(self, payload: dict) -> None:
         """PUT /api/v2/configurations con Auth-Token."""
         url = f"{self._sonnen_base}/configurations"
         headers = {"Auth-Token": self.sonnen_token}
         async with self._session.put(url, headers=headers, json=payload, timeout=10) as resp:
+            txt = await resp.text()
             if resp.status not in (200, 201):
-                txt = await resp.text()
-                _LOGGER.warning("Sonnen PUT configurations → HTTP %s: %s", resp.status, txt)
+                _LOGGER.warning("Sonnen PUT configurations %s → HTTP %s: %s", payload, resp.status, txt)
+            else:
+                _LOGGER.debug("Sonnen PUT configurations %s → HTTP %s: %s", payload, resp.status, txt)
 
     async def _set_operating_mode(self, mode: str) -> None:
         """Cambia el modo de operación: '1'=Manual, '2'=Auto/Self-Consumption."""
