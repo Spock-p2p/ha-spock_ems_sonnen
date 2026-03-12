@@ -96,7 +96,10 @@ class SpockEnergyCoordinator(DataUpdateCoordinator[dict[str, Any]]):
     def _str_or_none(value) -> str | None:
         if value is None:
             return None
-        return str(value)
+        try:
+            return str(int(float(value)))
+        except (ValueError, TypeError):
+            return str(value)
 
     @staticmethod
     def _bool_str_or_none(value) -> str | None:
@@ -279,7 +282,7 @@ class SpockEnergyCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             #   Spock:  positivo = importando de red, negativo = exportando a red
             #   => invertir signo
             grid_feed = status.get("GridFeedIn_W")
-            ongrid_power = -grid_feed if grid_feed is not None else None
+            ongrid_power = int(-grid_feed) if grid_feed is not None else None
 
             # Flags de carga/descarga
             bat_charge_allowed = bat_soc < 100 if bat_soc is not None else None
